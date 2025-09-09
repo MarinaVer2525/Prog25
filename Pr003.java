@@ -71,6 +71,21 @@ class Pr003 {
 		for (int i = (int) ch; i < (int) 'А' + 66; i++)
 		       System.out.print(ch++ + ", ");
 
-		System.out.println();	
+		System.out.println();
+
+		//использование логического типа данных
+		varb = false;
+		System.out.println("Значение varb: " + varb);
+
+		varb = true;
+		System.out.println("Значение varb: " + varb);
+
+		if(varb)
+			System.out.println("ВЫполняется, если varb == true");
+		varb = false;
+		if(varb)
+			System.out.println("ВЫполняется, если varb == true");
+
+		System.out.println("Результат сравнения 10>9: " + (10>9));	
 	}
 }
