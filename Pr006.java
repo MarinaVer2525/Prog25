@@ -3,14 +3,15 @@ class Pr006 {
 	public static void main(String args[]) 
 	    throws java.io.IOException {
 	    //Клавиатурный ввод символа
-		char ch, temp;
+		char ch, temp=' ';
 		System.out.println("Введите символ с клавиатуры: ");
 		ch = (char) System.in.read();
 		System.out.println("Введен символ: " + ch);
-		temp = (char) System.in.read();
+		for (;temp != '\n';)
+			temp = (char) System.in.read();
 
 		//Угадывание значения символьной переменной
-		char answer = 'D';
+		/*char answer = 'D';
 		System.out.println("Введите символ ...");
 		ch = (char) System.in.read();
 
@@ -23,7 +24,7 @@ class Pr006 {
 				System.out.println("Нужный символ ближе к концу алфавита");
 			else 
 				System.out.println("Нужный символ ближе к началу алфавита");
-		}
+		}*/
 
 		System.out.println();
 		//вложенный оператор if()
@@ -86,18 +87,18 @@ class Pr006 {
 			}
 
 			//Вложенные операторы switch
-			System.out.println();
-			ch = 'R';
+			/*System.out.println();
+			char ch2 = 'R';
 			char ch1 = 'A';
-			switch(ch) {
+			switch(ch2) {
 					case 'A':
 						System.out.println("Значение A внешнего оператора switch");
-							swich(ch1) {
-								case 'A':
-									System.out.println("Значение A внутреннего оператора switch");
-									break;
-							}
-							break;
+						swich(ch1) {
+							case 'A':
+								System.out.println("Значение A внутреннего оператора switch");
+								break;
+						}
+						break;
 					case 'R':
 						System.out.println("Значение R внешнего оператора switch");
 							swich(ch1) {
@@ -108,14 +109,14 @@ class Pr006 {
 							break;
 					default:
 						System.out.println("Значение по умолчанию для внешнего switch()");
-		}
+			}*/
 			
 			//оператор цикла for
 			System.out.println();
 			double num, sroot, rerr;
 
 			for(num = 1.0; num < 100.0; num++) {
-				sroot = Math.scrt(num);
+				sroot = Math.sqrt(num);
 				System.out.println("Квадратный корень из " + num + "равен " + sroot);
 
 				//вычисление ошибки округления
@@ -123,5 +124,55 @@ class Pr006 {
 				System.out.println("Ошибки округления: " + rerr);
 				System.out.println("");
 			}
+
+			System.out.println();
+			int x;
+			for(x = 100; x > -100; x -= 5)
+				System.out.println(x);
+			
+			System.out.println("\nПример цикла, тело которого не выполняется ни разу");
+			for(x = 100; x > 100; x -= 5)
+				System.out.println(x);
+			System.out.println("После цикла for");
+
+			System.out.println();
+			
+			for (i=0, j=10; i < j; i++, j--)
+				System.out.println("i = " + i + " j = " + j);
+
+		//Чтение символов с клавиатуры внутри цикла for
+		System.out.print("\nВведите \'S\' для остановки цикла чтения с клавиатуры: ");
+		for(i=0; (char) System.in.read() !='S'; i++) {
+			System.out.println("Итерация №" + i);
+			System.out.print("Введите символ: ");
+			temp = (char) System.in.read();
+		}
+		System.out.println();
+
+		//Пропуск отдеельных частей в определении цикла for
+		System.out.println();
+		for(i=0;i<10;) {
+			System.out.println("Итерация №" + i);
+			i++;
+		}
+
+		//Бесконечный цикл
+		for(;;) {
+			System.out.println("Итерация");
+			System.out.println("Для остановки цикла введите \'q\'");
+			temp = (char) System.in.read();
+			if (temp == 'q')
+				break;
+		}
+
+		//Циклы без тела
+		int sum = 0;
+		for(i = 1; i<= 5; sum += i++);
+		System.out.println("Значение sum: " + sum);
+
+		//Объявление параметра цикла внутри цикла
+		for (int ii=1; ii <= 10; sum += ii++)
+		System.out.println("Значение sum: " + sum);
+		//System.out.println("Значение ii: " + ii);
 	}
 }
