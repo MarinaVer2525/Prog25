@@ -6,7 +6,7 @@ class Help {
         System.out.println("1. if");
         System.out.println("2. switch");
         System.out.print("Выберите нужное число: ");
-        choice = (char) System.in.read("");
+        choice = (char) System.in.read();
         
         System.out.println("\n");
 
