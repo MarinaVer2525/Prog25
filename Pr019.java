@@ -1,5 +1,5 @@
 //Суперкласс (родительский для всех подклассов двумерных фигур)
-class TwoDShape {
+abstract class TwoDShape {
 	private double width;
 	private double height;
 	private String name;
@@ -22,6 +22,7 @@ class TwoDShape {
 		height = h;
 		name = n;
 	}
+
 	//Конструктор объекта из объекта совместимого типа
 	TwoDShape(TwoDShape ob) {
 		width = ob.width;
@@ -60,16 +61,13 @@ class TwoDShape {
 		System.out.println("Имя двумерной фигуры: " + name);
 		return name;
 	}
-	double area() {
-		System.out.println("Метод area() должен быть переопределён.");
-		return 0.0;
-	}
+	abstract double area();
 }
 
 //Подкласс суперкласса TwoDShape (дочерний класс) для описания треугольников
 class Triangle extends TwoDShape {
 	String style;
-//Конструктор, опредлённый в подклассе
+    //Конструктор, опредлённый в подклассе
 	Triangle() {
 		super();
 		style = "Без стиля";
@@ -84,12 +82,14 @@ class Triangle extends TwoDShape {
 		super(w, h, "Треугольник");
 		style = s;
 	}
+
 	//Создание треугольника на базе существующего объекта (копия объекта)
 	Triangle(Triangle ob) {
 		//Вызов конструктора суперкласса с передачей объекта "Треугольник"
 		super(ob);
 		style = ob.style;
 	}
+
 	//Переопределяемый метод суперкласса, вычисляющий площадь треугольника
 	double area() {
 		return getWidth() * getHeight() / 2;
@@ -133,7 +133,8 @@ class Rectangle extends TwoDShape {
 		return getWidth() * getHeight();
 	}
 }
-class Pr018 {
+
+class Pr019 {
 	public static void main(String args[]) {
 		TwoDShape[] shapes = new TwoDShape[5];
 
@@ -141,7 +142,8 @@ class Pr018 {
 		shapes[1] = new Rectangle(4.5);
 		shapes[2] = new Rectangle(7.0, 4.5);
 		shapes[3] = new Triangle(9.0);
-		shapes[4] = new TwoDShape(4.0, 3.5, "абстрактная фигура");
+		//Объект абстрактного класса TwoDShape не может быть создан
+		shapes[4] = new Triangle(4.0);
 
 		for(int i=0; i < shapes.length; i++) {
 			System.out.println("Имя объекта: " + shapes[i].getName());
@@ -149,7 +151,7 @@ class Pr018 {
 			System.out.println();
 		}
 
-        //К методам, определённым только в подклассах у ссылочной переменной суперкласса нет доступа:
+		//К методам, определённым только в подклассах у ссылочной переменной суперкласса нет доступа:
 		//shapes[0].showStyle();
 		Triangle t1 = new Triangle("контурный", 5.0, 4.5);
 		t1.showStyle();
